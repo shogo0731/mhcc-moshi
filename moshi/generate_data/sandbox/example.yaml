@@ -1,0 +1,49 @@
+# data
+data:
+  train_data: '/users/s1f102201582/projects/mhcc-moshi/moshi/data/v2/data.jsonl' # Fill
+  eval_data: '' # Optionally Fill
+  shuffle: true
+
+# model
+moshi_paths:
+  # hf_repo_id: "kyutai/moshiko-pytorch-bf16"
+  hf_repo_id: "nu-dialogue/j-moshi-ext"
+
+
+full_finetuning: false # Activate lora.enable if partial finetuning
+lora:
+  enable: true
+  rank: 128
+  scaling: 2.
+  ft_embed: true
+
+# training hyperparameters
+first_codebook_weight_multiplier: 100.
+text_padding_weight: .5
+
+
+# tokens per training steps = batch_size x num_GPUs x duration_sec
+# we recommend a sequence duration of 300 seconds
+# If you run into memory error, you can try reduce the sequence length
+duration_sec: 300
+batch_size: 4
+max_steps: 300
+
+gradient_checkpointing: true # Activate checkpointing of layers
+
+# optim
+optim:
+  lr: 2.e-6
+  weight_decay: 0.1
+  pct_start: 0.05
+
+# other
+seed: 0
+log_freq: 10
+eval_freq: 1
+do_eval: False
+ckpt_freq: 10
+
+save_adapters: True
+
+run_dir: "/users/s1f102201582/projects/mhcc-moshi/moshi/output/test"  # Fill
