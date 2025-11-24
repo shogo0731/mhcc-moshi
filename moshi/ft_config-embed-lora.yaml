@@ -8,10 +8,10 @@ data:
 moshi_paths: 
   hf_repo_id: "nu-dialogue/j-moshi-ext"
   
-full_finetuning: true # Activate lora.enable if partial finetuning
+full_finetuning: false # Activate lora.enable if partial finetuning
 lora:
-  enable: false # Set to False if full_finetuning is True
-  rank: 128
+  enable: true # Set to False if full_finetuning is True
+  rank: 256
   scaling: 2.
   ft_embed: false # Optional, set to True if you want to finetune the embedding layer
 
@@ -38,13 +38,13 @@ ckpt_freq: 100
 
 
 # Must be False if full_finetuning is True
-save_adapters: false
+save_adapters: true
 
-run_dir: "/users/s1f102201582/projects/mhcc-moshi/moshi/output/v2.2"  # Fill
+run_dir: "/users/s1f102201582/projects/mhcc-moshi/moshi/output/v2.0"  # Fill
 
 # This part is optional and can be kept commented out
 wandb:
   project: "mhcc-moshi" # your wandb project name
-  run_name: "step2000-batch8-data1093-full" # your wandb run name
+  run_name: "step1000-batch1-data1093-lora" # your wandb run name
   key: "0f695e81108b061ca6eef27a78cb1c805453af5a" # your wandb api key
   offline: False
